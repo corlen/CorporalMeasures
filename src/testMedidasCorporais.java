@@ -22,6 +22,12 @@ public class testMedidasCorporais {
 	
 	@Test
 	public void testPesoIdeal() {
+		System.out.println("RESULTADOS: \n\nMassa Gorda(%): " + formatValues(mc.massa_gorda_perc) +
+		"\nMassa Gorda(Kg): " + formatValues(mc.getMassaGordaKgs()) +  
+		"\nMassa Magra(%): " + formatValues(mc.massa_magra_perc) + 
+		"\nMassa Magra(Kg): " + formatValues(mc.getMassaMagraKgs()) + 
+		"\n\nPeso Ideal(Kg): "+ formatValues(mc.getPesoIdeal()) + 
+		"\nPreciso Perder(Kg): " + formatValues((mc.peso-mc.getPesoIdeal())));
 		Assert.assertEquals(83.18203785517917, mc.getPesoIdeal());
 	}
 
@@ -37,20 +43,10 @@ public class testMedidasCorporais {
 		Assert.assertEquals(Double.NaN, mc1.getPesoIdeal());
 	}
 	
-	@Test
-	public void testMassaMagraEmKgs(){
-		Assert.assertEquals(67.37745066269515, mc.getMassaMagraKgs());
-	}
 	
-//	private String formatValues(double number){
-//		return new DecimalFormat("#,###.00").format(number);
+	private String formatValues(double number){
+		return new DecimalFormat("#,###.00").format(number);
+	}	
 
-//	System.out.println("RESULTADOS: \n\nMassa Gorda(%): " + formatValues(mc.massa_gorda_perc) +
-//	"\nMassa Gorda(Kg): " + formatValues(mc.getMassaGordaKgs()) +  
-//	"\nMassa Magra(%): " + formatValues(mc.massa_magra_perc) + 
-//	"\nMassa Magra(Kg): " + formatValues(mc.getMassaMagraKgs()) + 
-//	"\n\nPeso Ideal(Kg): "+ formatValues(mc.getPesoIdeal()) + 
-//	"\nPreciso Perder(Kg): " + formatValues((mc.peso-mc.getPesoIdeal()))
-//  );
 	
 }
