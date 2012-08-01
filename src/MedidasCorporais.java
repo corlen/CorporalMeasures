@@ -1,4 +1,5 @@
 import java.text.DecimalFormat;
+import java.util.Scanner;
 
 
 
@@ -24,14 +25,29 @@ public class MedidasCorporais {
 	
 	public static void main(String[] args) {
 
+		Double peso, cintura, pescoco, altura;
+		Scanner scan = new Scanner(System.in);
+
+		System.out.println("Peso(em kg): ");
+		peso = Double.parseDouble(scan.nextLine());
+		
+		System.out.println("Cintura(em cm): ");
+		cintura = Double.parseDouble(scan.nextLine());
+
+		System.out.println("Pescoco(em cm): ");
+		pescoco = Double.parseDouble(scan.nextLine());
+
+		System.out.println("Altura(em cm): ");
+		altura = Double.parseDouble(scan.nextLine());
+		
+		scan.close();
+
 		double MASSA_GORDA_DESEJADA_PERCENT = 19.0;
-		double ALTURA_EM_CM = 173.0;
-		double PESCOCO_EM_CM = 42.0;
-		double CINTURA_EM_CM = 115.0;
-		double PESO_EM_KGS = 102.0;
 		
-		MedidasCorporais mc = new MedidasCorporais(PESO_EM_KGS,CINTURA_EM_CM,PESCOCO_EM_CM,ALTURA_EM_CM,MASSA_GORDA_DESEJADA_PERCENT);
+		MedidasCorporais mc = new MedidasCorporais(peso,cintura,pescoco,altura,MASSA_GORDA_DESEJADA_PERCENT);
 		
+		System.out.println();
+		System.out.println("========RESULTADO============");
 		System.out.println("Massa Gorda(%): " + new DecimalFormat("#,###.00").format(mc.massa_gorda_perc));
 		System.out.println("Massa Gorda(Kg): " + new DecimalFormat("#,###.00").format(mc.getMassaGordaKgs()));
 		System.out.println("Massa Magra(%): " + new DecimalFormat("#,###.00").format(mc.massa_magra_perc));
