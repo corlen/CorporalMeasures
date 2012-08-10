@@ -31,6 +31,8 @@ public class MedidasCorporais {
 	
 	public static void main(String[] args) {
 
+		double MASSA_GORDA_DESEJADA_PERCENT = 0;
+		
 		Double peso, cintura, pescoco, altura,quadril=0.0;
 		int sexo;
 		Scanner scan = new Scanner(System.in);
@@ -53,11 +55,42 @@ public class MedidasCorporais {
 		if(sexo == SEXO_FEMININO){
 			System.out.println("Quadril(em cm): ");
 			quadril = Double.parseDouble(scan.nextLine());
+			
+			System.out.println("% gordura corporal	\tMulheres");
+			System.out.println("Nível de competição	\t9%-12%");
+			System.out.println("Bastante em forma	\t<= 15%");
+			System.out.println("Em forma			16%-20%");
+			System.out.println("Média				21%-25%");
+			System.out.println("Abaixo da média		\t26%-30%");
+			System.out.println("Precisa de atenção	\t31%-40%+");
+			System.out.println();
+			System.out.println("% de gordura corporal desejada:");
+			MASSA_GORDA_DESEJADA_PERCENT = Double.parseDouble(scan.nextLine());
+		}else{
+			System.out.println("% gordura corporal	\tHomens");
+			System.out.println("Nível de competição	\t3%-6%");
+			System.out.println("Bastante em forma	\t<= 9%");
+			System.out.println("Em forma			10%-14%");
+			System.out.println("Média				15%-19%");
+			System.out.println("Abaixo da média		\t20%-25%");
+			System.out.println("Precisa de atenção	\t26%-30%+");
+			System.out.println();
+			System.out.println("% de gordura corporal desejada:");
+			MASSA_GORDA_DESEJADA_PERCENT = Double.parseDouble(scan.nextLine());
 		}
 		
 		scan.close();
 
-		double MASSA_GORDA_DESEJADA_PERCENT = 19.0;
+		//double MASSA_GORDA_DESEJADA_PERCENT = 27.5;
+		/**
+		 * % gordura corporal	Homens		Mulheres
+			Nível de competição	3%-6%		9%-12%
+			Bastante em forma	<= 9%		<= 15%
+			Em forma			10%-14%		16%-20%
+			Média				15%-19%		21%-25%
+			Abaixo da média		20%-25%		26%-30%
+			Precisa de atenção	26%-30%+	31%-40%+
+		 */
 		
 		MedidasCorporais mc = new MedidasCorporais(peso,cintura,pescoco,altura,quadril,MASSA_GORDA_DESEJADA_PERCENT, sexo);
 		
