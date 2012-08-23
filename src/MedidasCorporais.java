@@ -1,4 +1,5 @@
 import java.text.DecimalFormat;
+import java.util.HashMap;
 import java.util.Scanner;
 
 
@@ -13,11 +14,14 @@ public class MedidasCorporais {
 	double massa_magra_perc;
 	double massa_gorda_perc;
 	double massa_gorda_perc_desejada;
+	double nivelAtividadeFisica;
 	int sexo = 1;
+	int idade;
 	public static final int SEXO_MASCULINO = 0;
 	public static final int SEXO_FEMININO = 1;
+	
 
-	public MedidasCorporais(double peso, double cintura, double pescoco, double altura, double quadril,double massa_gorda_perc_desejada, int sexo){
+	public MedidasCorporais(double peso, double cintura, double pescoco, double altura, double quadril,double massa_gorda_perc_desejada, int sexo, double nivelAtividadeFisica, int idade){
 		this.peso = peso;
 		this.cintura = cintura;
 		this.pescoco = pescoco;
@@ -25,21 +29,28 @@ public class MedidasCorporais {
 		this.quadril = quadril;
 		this.massa_gorda_perc_desejada = massa_gorda_perc_desejada;
 		this.sexo = sexo;
+		this.idade = idade;
+		this.nivelAtividadeFisica = nivelAtividadeFisica;
 		this.setMassaGordaPerc(sexo);
 		this.setMassaMagraPerc();
+
+		
 	}
 	
 	public static void main(String[] args) {
 
 		double MASSA_GORDA_DESEJADA_PERCENT = 0;
 		
-		Double peso, cintura, pescoco, altura,quadril=0.0;
-		int sexo;
+		Double peso, cintura, pescoco, altura,quadril=0.0, nivelAtividadeFisica;
+		int sexo, idade;
 		Scanner scan = new Scanner(System.in);
 
 		System.out.println("Sexo(0 para Masculino e 1 para Feminino): ");
 		sexo = Integer.parseInt(scan.nextLine());
 
+		System.out.println("Idade: ");
+		idade = Integer.parseInt(scan.nextLine());
+		
 		System.out.println("Peso(em kg): ");
 		peso = Double.parseDouble(scan.nextLine());
 		
@@ -79,6 +90,23 @@ public class MedidasCorporais {
 			MASSA_GORDA_DESEJADA_PERCENT = Double.parseDouble(scan.nextLine());
 		}
 		
+		HashMap<Integer, Double> NIVEL_ATIVIDADE_FISICA = new HashMap<Integer, Double>();
+		NIVEL_ATIVIDADE_FISICA.put(1, 1.2);
+		NIVEL_ATIVIDADE_FISICA.put(2, 1.375);
+		NIVEL_ATIVIDADE_FISICA.put(3, 1.55);
+		NIVEL_ATIVIDADE_FISICA.put(4, 1.725);
+		NIVEL_ATIVIDADE_FISICA.put(5, 1.9);
+		
+		System.out.println("Nivel Atividade Fisica:");
+		System.out.println("1 - Sedentário (praticamente nenhum exercício)");
+		System.out.println("2 - Levemente ativo (exercício leve/esportes 1-3 dias/semana)");
+		System.out.println("3 - Moderadamente ativo (exercício moderado/esportes 3-5 dias/semana)");
+		System.out.println("4 - Bastante ativo (exercício forte/esportes 6-7 dias/semana)");
+		System.out.println("5 - Extra ativo (trabalho físico ou treinamento muito intenso)");
+		System.out.println();
+		Integer nivel_escolhido = Integer.parseInt(scan.nextLine());
+		nivelAtividadeFisica = NIVEL_ATIVIDADE_FISICA.get(nivel_escolhido);
+		
 		scan.close();
 
 		//double MASSA_GORDA_DESEJADA_PERCENT = 27.5;
@@ -92,7 +120,7 @@ public class MedidasCorporais {
 			Precisa de atenção	26%-30%+	31%-40%+
 		 */
 		
-		MedidasCorporais mc = new MedidasCorporais(peso,cintura,pescoco,altura,quadril,MASSA_GORDA_DESEJADA_PERCENT, sexo);
+		MedidasCorporais mc = new MedidasCorporais(peso,cintura,pescoco,altura,quadril,MASSA_GORDA_DESEJADA_PERCENT, sexo, nivelAtividadeFisica, idade);
 		
 		System.out.println();
 		System.out.println("========RESULTADO============");
@@ -104,6 +132,10 @@ public class MedidasCorporais {
 		System.out.println();
 		System.out.println("Peso Ideal(Kg): "+new DecimalFormat("#,###.00").format(mc.getPesoIdeal()));
 		System.out.println("Preciso Perder(Kg): "+new DecimalFormat("#,###.00").format(mc.peso-mc.getPesoIdeal()));
+		System.out.println();
+		System.out.println("Gasto Calorico Basal: "+new DecimalFormat("#,###.00").format(mc.getGastoCaloricoBasal()));
+		System.out.println("Gasto Calorico Basal para dieta emagrecimento: "+new DecimalFormat("#,###.00").format(mc.getGastoCaloricoBasalNivelDietaEmagrecimento()));
+		System.out.println("Gasto Calorico Basal para hipertrofia: "+new DecimalFormat("#,###.00").format(mc.getGastoCaloricoBasalNivelDietaHipertrofia()));
 		
 	}
 	
@@ -129,6 +161,18 @@ public class MedidasCorporais {
 
 	public double getMassaGordaKgs(){
 		return (this.massa_gorda_perc/100)*this.peso; 
+	}
+	
+	public double getGastoCaloricoBasal(){
+		return ((10*this.peso)+(6.25*this.altura)-(5*this.idade)+5)*this.nivelAtividadeFisica;
+	}
+
+	public double getGastoCaloricoBasalNivelDietaEmagrecimento(){
+		return (((10*this.peso)+(6.25*this.altura)-(5*this.idade)+5)*this.nivelAtividadeFisica)*0.8;
+	}
+
+	public double getGastoCaloricoBasalNivelDietaHipertrofia(){
+		return (((10*this.peso)+(6.25*this.altura)-(5*this.idade)+5)*this.nivelAtividadeFisica)*1.2;
 	}
 
 }

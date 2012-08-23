@@ -15,12 +15,15 @@ public class testMedidasCorporais {
 	private static final double PESO_EM_KGS = 102.0;
 	private static final double QUADRIL = 0.0;
 	private static final int SEXO = 0;
+	private static final int IDADE = 33;
+	private static final double NIVEL_ATIVIDADE_FISICA = 1.375;
+	
 	
 	private MedidasCorporais mc;
 
 	@Before
 	public void setUp() throws Exception {
-		mc = new MedidasCorporais(PESO_EM_KGS, CINTURA_EM_CM, PESCOCO_EM_CM, ALTURA_EM_CM, QUADRIL,MASSA_GORDA_DESEJADA_PERCENT,SEXO);
+		mc = new MedidasCorporais(PESO_EM_KGS, CINTURA_EM_CM, PESCOCO_EM_CM, ALTURA_EM_CM, QUADRIL,MASSA_GORDA_DESEJADA_PERCENT,SEXO, NIVEL_ATIVIDADE_FISICA, IDADE);
 	}
 	
 	@Test
@@ -42,7 +45,7 @@ public class testMedidasCorporais {
 	
 	@Test
 	public void testConstrutorIsNull() {
-		MedidasCorporais mc1 = new MedidasCorporais(0, 0, 0, 0, 0,0,0);
+		MedidasCorporais mc1 = new MedidasCorporais(0, 0, 0, 0, 0,0,0,0,0);
 		Assert.assertEquals(Double.NaN, mc1.getPesoIdeal());
 	}
 	
