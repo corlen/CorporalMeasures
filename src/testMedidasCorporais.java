@@ -17,20 +17,23 @@ public class testMedidasCorporais {
 	private static final int SEXO = 0;
 	private static final int IDADE = 33;
 	private static final double NIVEL_ATIVIDADE_FISICA = 1.375;
+	private static final double PEITO = 0d;
+	private static final double ABDOMEN = 0d;
+	private static final double PERNA = 0d;
 	
 	
 	private MedidasCorporais mc;
 
 	@Before
 	public void setUp() throws Exception {
-		mc = new MedidasCorporais(PESO_EM_KGS, CINTURA_EM_CM, PESCOCO_EM_CM, ALTURA_EM_CM, QUADRIL,MASSA_GORDA_DESEJADA_PERCENT,SEXO, NIVEL_ATIVIDADE_FISICA, IDADE);
+		mc = new MedidasCorporais(PESO_EM_KGS, CINTURA_EM_CM, PESCOCO_EM_CM, ALTURA_EM_CM, QUADRIL,MASSA_GORDA_DESEJADA_PERCENT,SEXO, NIVEL_ATIVIDADE_FISICA, IDADE, PEITO, ABDOMEN, PERNA);
 	}
 	
 	@Test
 	public void testPesoIdeal() {
-		System.out.println("RESULTADOS: \n\nMassa Gorda(%): " + formatValues(mc.massa_gorda_perc) +
+		System.out.println("RESULTADOS: \n\nMassa Gorda(%): " + formatValues(mc.massaGordaPerc) +
 		"\nMassa Gorda(Kg): " + formatValues(mc.getMassaGordaKgs()) +  
-		"\nMassa Magra(%): " + formatValues(mc.massa_magra_perc) + 
+		"\nMassa Magra(%): " + formatValues(mc.massaMagraPerc) + 
 		"\nMassa Magra(Kg): " + formatValues(mc.getMassaMagraKgs()) + 
 		"\n\nPeso Ideal(Kg): "+ formatValues(mc.getPesoIdeal()) + 
 		"\nPreciso Perder(Kg): " + formatValues((mc.peso-mc.getPesoIdeal())));
@@ -45,7 +48,7 @@ public class testMedidasCorporais {
 	
 	@Test
 	public void testConstrutorIsNull() {
-		MedidasCorporais mc1 = new MedidasCorporais(0, 0, 0, 0, 0,0,0,0,0);
+		MedidasCorporais mc1 = new MedidasCorporais(0, 0, 0, 0, 0,0,0,0,0,0,0,0);
 		Assert.assertEquals(Double.NaN, mc1.getPesoIdeal());
 	}
 	
