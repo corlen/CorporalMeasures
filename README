@@ -1,5 +1,1 @@
-Programa em linha de comando que cálcula o peso ideal utilizando uma metodologia sem adipometro.
-
-TODO:
--Adicionar a possibilidade de cálculo com adipometro
--Customizar a porcentagem de gordura corporal desejada(atualmente hardcoded em 19%)
+Programa em linha de comando que cálcula o peso ideal 
