@@ -44,6 +44,9 @@ public class MedidasCorporais {
 		
 	}
 	
+	public MedidasCorporais() {
+	}
+
 	public double getPesoIdeal() {
 		return  (this.peso - (this.massaGordaPerc / 100 * this.peso)) / (1 - (this.massaGordaPercDesejada / 100));
 	}
