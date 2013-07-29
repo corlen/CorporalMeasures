@@ -13,15 +13,16 @@ public class Principal {
 		int sexo, idade, menuEscolhido;
 		Scanner scan = new Scanner(System.in);
 
-		System.out.println("Sexo(0 para Masculino e 1 para Feminino): ");
-		sexo = Integer.parseInt(scan.nextLine());
-
 		System.out.println("Menu:");
 		System.out.println("1 - Peso Ideal");
 		System.out.println("2 - Gasto Calórico Basal");
 		System.out.println("3 - Peso Ideal com Adipometro");
 		menuEscolhido = Integer.parseInt(scan.nextLine());
-		
+
+		System.out.println("Sexo: ");
+		System.out.println("0 - Masculino");
+		System.out.println("1 - Feminino");
+		sexo = Integer.parseInt(scan.nextLine());
 		
 		System.out.println("Idade: ");
 		idade = Integer.parseInt(scan.nextLine());
