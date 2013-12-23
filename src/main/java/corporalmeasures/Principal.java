@@ -9,10 +9,17 @@ public class Principal {
 
 	public static void main(String[] args) {
 
-		double MASSA_GORDA_DESEJADA_PERCENT = 0;
-		
-		Double peso, cintura = 0D, pescoco = 0D, altura,quadril=0.0, nivelAtividadeFisica=0D;
-		int sexo, idade, menuEscolhido;
+		Double massaGordaDesejadaPercent = 0D;
+		Double peso;
+        Double cintura = 0D;
+        Double pescoco = 0D;
+        Double altura;
+        Double quadril=0.0;
+        Double nivelAtividadeFisica=0D;
+		Integer sexo;
+        Integer idade;
+        Integer menuEscolhido;
+
 		Scanner scan = new Scanner(System.in);
 
 		System.out.println("Menu:");
@@ -42,7 +49,7 @@ public class Principal {
 			System.out.println("Pescoco(em cm): ");
 			pescoco = Double.parseDouble(scan.nextLine());
 
-			if(sexo == MedidasCorporais.SEXO_FEMININO){
+			if(sexo.equals(MedidasCorporais.SEXO_FEMININO)){
 				System.out.println("Quadril(em cm): ");
 				quadril = Double.parseDouble(scan.nextLine());
 				
@@ -55,7 +62,7 @@ public class Principal {
 				System.out.println("Precisa de atencao	\t31%-40%+");
 				System.out.println();
 				System.out.println("% de gordura corporal desejada:");
-				MASSA_GORDA_DESEJADA_PERCENT = Double.parseDouble(scan.nextLine());
+				massaGordaDesejadaPercent = Double.parseDouble(scan.nextLine());
 			}else{
 				System.out.println("% gordura corporal\t\tHomens");
 				System.out.println("Nivel de Competicao \t3%-6%");
@@ -66,7 +73,7 @@ public class Principal {
 				System.out.println("Precisa de atencao 	\t26%-30%+");
 				System.out.println();
 				System.out.println("% de gordura corporal desejada:");
-				MASSA_GORDA_DESEJADA_PERCENT = Double.parseDouble(scan.nextLine());
+				massaGordaDesejadaPercent = Double.parseDouble(scan.nextLine());
 			}
 		}
 		
@@ -93,28 +100,25 @@ public class Principal {
 		
 		scan.close();
 
-		double peito = 3.0d, abdomen = 3.0d, perna = 3.0d;
-		MedidasCorporais mc;
 
-		if(menuEscolhido == 1){
-			mc = new MedidasCorporais();
-            mc.setPeso(peso);
-            mc.setCintura(cintura);
-            mc.setPescoco(pescoco);
-            mc.setAltura(altura);
-            mc.setQuadril(quadril);
-			mc.setMassaGordaPercDesejada(MASSA_GORDA_DESEJADA_PERCENT);
-            mc.setSexo(sexo);
-            mc.setNivelAtividadeFisica(nivelAtividadeFisica);
-            mc.setIdade(idade);
-            mc.setPeito(peito);
-            mc.setAbdomen(abdomen);
-            mc.setPerna(perna);
-            mc.calculate();
-		}else{
-			mc = new MedidasCorporais();
-		}
-		
+        //TODO: falta fazer o calculo por adipometro ainda
+		Double peito = 3.0d, abdomen = 3.0d, perna = 3.0d;
+
+		MedidasCorporais mc = new MedidasCorporais();
+        mc.setPeso(peso);
+        mc.setCintura(cintura);
+        mc.setPescoco(pescoco);
+        mc.setAltura(altura);
+        mc.setQuadril(quadril);
+        mc.setMassaGordaPercDesejada(massaGordaDesejadaPercent);
+        mc.setSexo(sexo);
+        mc.setNivelAtividadeFisica(nivelAtividadeFisica);
+        mc.setIdade(idade);
+        mc.setPeito(peito);
+        mc.setAbdomen(abdomen);
+        mc.setPerna(perna);
+        mc.calculate();
+
 		System.out.println();
 		System.out.println("========RESULTADO============");
 		if(menuEscolhido == 1){
@@ -132,7 +136,7 @@ public class Principal {
 			System.out.println("Gasto Calorico Basal para dieta emagrecimento: "+new DecimalFormat("#,###.00").format(mc.getGastoCaloricoBasalNivelDietaEmagrecimento()));
 			System.out.println("Gasto Calorico Basal para hipertrofia: "+new DecimalFormat("#,###.00").format(mc.getGastoCaloricoBasalNivelDietaHipertrofia()));
 			System.out.println();
-		}else if(menuEscolhido == 3){
+		}else if(menuEscolhido == 3){  //TODO: incompleto
 			System.out.println("#Com Adpometro#");
 			System.out.println("Massa Gorda(%): " + new DecimalFormat("#,###.00").format(mc.getMassaGordaPercAdipometro()));
 			System.out.println("Massa Magra(%): " + new DecimalFormat("#,###.00").format(mc.getMassaMagraPercAdipometro()));

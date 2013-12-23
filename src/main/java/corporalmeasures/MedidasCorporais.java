@@ -2,24 +2,24 @@ package corporalmeasures;
 
 public class MedidasCorporais{
 
-    private double peso;
-    private double cintura;
-	private double pescoco;
-	private double altura;
-	private double quadril;
-	private double peito;
-	private double abdomen;
-	private double perna;
-	private double massaMagraPerc;
-	private double massaGordaPerc;
-	private double massaMagraPercAdipometro;
-	private double massaGordaPercAdipometro;
-	private double massaGordaPercDesejada;
-	private double nivelAtividadeFisica;
-	private int sexo = 1;
-	private int idade;
-	public static final int SEXO_MASCULINO = 0;
-	public static final int SEXO_FEMININO = 1;
+    private Double peso;
+    private Double cintura;
+	private Double pescoco;
+	private Double altura;
+	private Double quadril;
+	private Double peito;
+	private Double abdomen;
+	private Double perna;
+	private Double massaMagraPerc;
+	private Double massaGordaPerc;
+	private Double massaMagraPercAdipometro;
+	private Double massaGordaPercAdipometro;
+	private Double massaGordaPercDesejada;
+	private Double nivelAtividadeFisica;
+	private Integer sexo = 1;
+	private Integer idade;
+	public static final Integer SEXO_MASCULINO = 0;
+	public static final Integer SEXO_FEMININO = 1;
 	
 
 	public void calculate(){
@@ -29,7 +29,7 @@ public class MedidasCorporais{
 		this.setMassaMagraPercComAdipometro();
 	}
 
-	public double getPesoIdeal() {
+	public Double getPesoIdeal() {
 		return  (this.peso - (this.massaGordaPerc / 100 * this.peso)) / (1 - (this.massaGordaPercDesejada / 100));
 	}
 
@@ -43,11 +43,11 @@ public class MedidasCorporais{
 	private void setMassaMagraPerc(){
 		this.massaMagraPerc = (100.0 - this.massaGordaPerc);
 	}
-	public double getMassaMagraKgs(){
+	public Double getMassaMagraKgs(){
 		return (this.massaMagraPerc/100)*this.peso; 
 	}
 	
-	public double getMassaGordaKgs(){
+	public Double getMassaGordaKgs(){
 		return (this.massaGordaPerc/100)*this.peso; 
 	}
 	
@@ -60,91 +60,91 @@ public class MedidasCorporais{
 		this.massaMagraPercAdipometro = (100.0 - this.massaGordaPercAdipometro);
 	}
 	
-	public double getMassaMagraKgsComAdipometro(){
+	public Double getMassaMagraKgsComAdipometro(){
 		return (this.massaMagraPercAdipometro/100)*this.peso; 
 	}
-	public double getMassaGordaKgsComAdipometro(){
+	public Double getMassaGordaKgsComAdipometro(){
 		return (this.massaGordaPercAdipometro/100)*this.peso;
 	}
 	
 	
-	public double getGastoCaloricoBasal(){
+	public Double getGastoCaloricoBasal(){
 		return ((10*this.peso)+(6.25*this.altura)-(5*this.idade)+5)*this.nivelAtividadeFisica;
 	}
 
-	public double getGastoCaloricoBasalNivelDietaEmagrecimento(){
+	public Double getGastoCaloricoBasalNivelDietaEmagrecimento(){
 		return (((10*this.peso)+(6.25*this.altura)-(5*this.idade)+5)*this.nivelAtividadeFisica)*0.8;
 	}
 
-	public double getGastoCaloricoBasalNivelDietaHipertrofia(){
+	public Double getGastoCaloricoBasalNivelDietaHipertrofia(){
 		return (((10*this.peso)+(6.25*this.altura)-(5*this.idade)+5)*this.nivelAtividadeFisica)*1.2;
 	}
 
-    public double getPeso() {
+    public Double getPeso() {
         return peso;
     }
 
-    public void setPeso(double peso) {
+    public void setPeso(Double peso) {
         this.peso = peso;
     }
 
-    public void setCintura(double cintura) {
+    public void setCintura(Double cintura) {
         this.cintura = cintura;
     }
 
-    public void setPescoco(double pescoco) {
+    public void setPescoco(Double pescoco) {
         this.pescoco = pescoco;
     }
 
-    public void setAltura(double altura) {
+    public void setAltura(Double altura) {
         this.altura = altura;
     }
 
-    public void setQuadril(double quadril) {
+    public void setQuadril(Double quadril) {
         this.quadril = quadril;
     }
 
-    public void setPeito(double peito) {
+    public void setPeito(Double peito) {
         this.peito = peito;
     }
 
-    public void setAbdomen(double abdomen) {
+    public void setAbdomen(Double abdomen) {
         this.abdomen = abdomen;
     }
 
-    public void setPerna(double perna) {
+    public void setPerna(Double perna) {
         this.perna = perna;
     }
 
-    public double getMassaMagraPerc() {
+    public Double getMassaMagraPerc() {
         return massaMagraPerc;
     }
 
-    public double getMassaGordaPerc() {
+    public Double getMassaGordaPerc() {
         return massaGordaPerc;
     }
 
-    public double getMassaMagraPercAdipometro() {
+    public Double getMassaMagraPercAdipometro() {
         return massaMagraPercAdipometro;
     }
 
-    public double getMassaGordaPercAdipometro() {
+    public Double getMassaGordaPercAdipometro() {
         return massaGordaPercAdipometro;
     }
 
-    public void setMassaGordaPercDesejada(double massaGordaPercDesejada) {
+    public void setMassaGordaPercDesejada(Double massaGordaPercDesejada) {
         this.massaGordaPercDesejada = massaGordaPercDesejada;
     }
 
-    public void setNivelAtividadeFisica(double nivelAtividadeFisica) {
+    public void setNivelAtividadeFisica(Double nivelAtividadeFisica) {
         this.nivelAtividadeFisica = nivelAtividadeFisica;
     }
 
-    public void setSexo(int sexo) {
+    public void setSexo(Integer sexo) {
         this.sexo = sexo;
     }
 
-    public void setIdade(int idade) {
+    public void setIdade(Integer idade) {
         this.idade = idade;
     }
 }
