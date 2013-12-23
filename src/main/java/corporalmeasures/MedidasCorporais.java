@@ -7,13 +7,8 @@ public class MedidasCorporais{
 	private Double pescoco;
 	private Double altura;
 	private Double quadril;
-	private Double peito;
-	private Double abdomen;
-	private Double perna;
 	private Double massaMagraPerc;
 	private Double massaGordaPerc;
-	private Double massaMagraPercAdipometro;
-	private Double massaGordaPercAdipometro;
 	private Double massaGordaPercDesejada;
 	private Double nivelAtividadeFisica;
 	private Integer sexo = 1;
@@ -25,8 +20,6 @@ public class MedidasCorporais{
 	public void calculate(){
 		this.setMassaGordaPerc(sexo);
 		this.setMassaMagraPerc();
-		this.setMassaGordaPercComAdipometro();
-		this.setMassaMagraPercComAdipometro();
 	}
 
 	public Double getPesoIdeal() {
@@ -50,23 +43,6 @@ public class MedidasCorporais{
 	public Double getMassaGordaKgs(){
 		return (this.massaGordaPerc/100)*this.peso; 
 	}
-	
-	private void setMassaGordaPercComAdipometro(){
-		double soma = this.peito + this.abdomen + this.perna;
-		this.massaGordaPercAdipometro = ((4.95/(((1.1093800 - 0.0008267*(soma))+ 0.0000016*(soma)*(soma)) - 0.0002574 * this.idade)) - 4.5) * 100;
-	}
-	
-	private void setMassaMagraPercComAdipometro(){
-		this.massaMagraPercAdipometro = (100.0 - this.massaGordaPercAdipometro);
-	}
-	
-	public Double getMassaMagraKgsComAdipometro(){
-		return (this.massaMagraPercAdipometro/100)*this.peso; 
-	}
-	public Double getMassaGordaKgsComAdipometro(){
-		return (this.massaGordaPercAdipometro/100)*this.peso;
-	}
-	
 	
 	public Double getGastoCaloricoBasal(){
 		return ((10*this.peso)+(6.25*this.altura)-(5*this.idade)+5)*this.nivelAtividadeFisica;
@@ -104,32 +80,12 @@ public class MedidasCorporais{
         this.quadril = quadril;
     }
 
-    public void setPeito(Double peito) {
-        this.peito = peito;
-    }
-
-    public void setAbdomen(Double abdomen) {
-        this.abdomen = abdomen;
-    }
-
-    public void setPerna(Double perna) {
-        this.perna = perna;
-    }
-
     public Double getMassaMagraPerc() {
         return massaMagraPerc;
     }
 
     public Double getMassaGordaPerc() {
         return massaGordaPerc;
-    }
-
-    public Double getMassaMagraPercAdipometro() {
-        return massaMagraPercAdipometro;
-    }
-
-    public Double getMassaGordaPercAdipometro() {
-        return massaGordaPercAdipometro;
     }
 
     public void setMassaGordaPercDesejada(Double massaGordaPercDesejada) {

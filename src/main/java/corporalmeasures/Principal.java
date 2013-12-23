@@ -25,7 +25,6 @@ public class Principal {
 		System.out.println("Menu:");
 		System.out.println("1 - Peso Ideal");
 		System.out.println("2 - Gasto Calórico Basal");
-		System.out.println("3 - Peso Ideal com Adipometro");
 		menuEscolhido = Integer.parseInt(scan.nextLine());
 
 		System.out.println("Sexo: ");
@@ -100,10 +99,6 @@ public class Principal {
 		
 		scan.close();
 
-
-        //TODO: falta fazer o calculo por adipometro ainda
-		Double peito = 3.0d, abdomen = 3.0d, perna = 3.0d;
-
 		MedidasCorporais mc = new MedidasCorporais();
         mc.setPeso(peso);
         mc.setCintura(cintura);
@@ -114,9 +109,6 @@ public class Principal {
         mc.setSexo(sexo);
         mc.setNivelAtividadeFisica(nivelAtividadeFisica);
         mc.setIdade(idade);
-        mc.setPeito(peito);
-        mc.setAbdomen(abdomen);
-        mc.setPerna(perna);
         mc.calculate();
 
 		System.out.println();
@@ -136,13 +128,6 @@ public class Principal {
 			System.out.println("Gasto Calorico Basal para dieta emagrecimento: "+new DecimalFormat("#,###.00").format(mc.getGastoCaloricoBasalNivelDietaEmagrecimento()));
 			System.out.println("Gasto Calorico Basal para hipertrofia: "+new DecimalFormat("#,###.00").format(mc.getGastoCaloricoBasalNivelDietaHipertrofia()));
 			System.out.println();
-		}else if(menuEscolhido == 3){  //TODO: incompleto
-			System.out.println("#Com Adpometro#");
-			System.out.println("Massa Gorda(%): " + new DecimalFormat("#,###.00").format(mc.getMassaGordaPercAdipometro()));
-			System.out.println("Massa Magra(%): " + new DecimalFormat("#,###.00").format(mc.getMassaMagraPercAdipometro()));
-			System.out.println();
-			System.out.println("Massa Gorda(Kg): " + new DecimalFormat("#,###.00").format(mc.getMassaGordaKgsComAdipometro()));
-			System.out.println("Massa Magra(Kg): " + new DecimalFormat("#,###.00").format(mc.getMassaMagraKgsComAdipometro()));
 		}
 	}	
 }
