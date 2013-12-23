@@ -6,12 +6,18 @@
 *.war
 *.ear
 
-#eclipse
+#Idea
+*.iml
+*.ipr
+*.iws
 
+#eclipse
 *.classpath
 *.project
 *.settings/org.eclipse.jdt.core.prefs
 *.settings/org.eclipse.core.resources.prefs
 
-
+build/
+.gradle/
+.idea/
 

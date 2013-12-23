@@ -1,3 +1,5 @@
+package corporalmeasures;
+
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -47,7 +49,7 @@ public class Principal {
 				System.out.println("% gordura corporal	\tMulheres");
 				System.out.println("Nivel de Competicao\t\t9%-12%");
 				System.out.println("Bastante em forma	\t<= 15%");
-				System.out.println("Em forma			16%-20%");
+				System.out.println("Em forma			\t16%-20%");
 				System.out.println("Media 				\t21%-25%");
 				System.out.println("Abaixo da media		\t26%-30%");
 				System.out.println("Precisa de atencao	\t31%-40%+");
@@ -56,10 +58,10 @@ public class Principal {
 				MASSA_GORDA_DESEJADA_PERCENT = Double.parseDouble(scan.nextLine());
 			}else{
 				System.out.println("% gordura corporal\t\tHomens");
-				System.out.println("Nivel de Competicao \t\t3%-6%");
+				System.out.println("Nivel de Competicao \t3%-6%");
 				System.out.println("Bastante em forma	\t<= 9%");
-				System.out.println("Em forma			10%-14%");
-				System.out.println("Media 				15%-19%");
+				System.out.println("Em forma			\t10%-14%");
+				System.out.println("Media 				\t15%-19%");
 				System.out.println("Abaixo da media		\t20%-25%");
 				System.out.println("Precisa de atencao 	\t26%-30%+");
 				System.out.println();
@@ -92,31 +94,38 @@ public class Principal {
 		scan.close();
 
 		double peito = 3.0d, abdomen = 3.0d, perna = 3.0d;
-		MedidasCorporais mc = new MedidasCorporais();
-		
+		MedidasCorporais mc;
+
 		if(menuEscolhido == 1){
-			mc = new MedidasCorporais(peso,cintura,pescoco,
-													altura,quadril,MASSA_GORDA_DESEJADA_PERCENT, 
-														sexo, nivelAtividadeFisica, idade, 
-															peito, abdomen, perna);
+			mc = new MedidasCorporais();
+            mc.setPeso(peso);
+            mc.setCintura(cintura);
+            mc.setPescoco(pescoco);
+            mc.setAltura(altura);
+            mc.setQuadril(quadril);
+			mc.setMassaGordaPercDesejada(MASSA_GORDA_DESEJADA_PERCENT);
+            mc.setSexo(sexo);
+            mc.setNivelAtividadeFisica(nivelAtividadeFisica);
+            mc.setIdade(idade);
+            mc.setPeito(peito);
+            mc.setAbdomen(abdomen);
+            mc.setPerna(perna);
+            mc.calculate();
 		}else{
-			mc = new MedidasCorporais(peso,0,0,
-					altura,0,0, 
-						sexo, nivelAtividadeFisica, idade, 
-							0, 0, 0);	
+			mc = new MedidasCorporais();
 		}
 		
 		System.out.println();
 		System.out.println("========RESULTADO============");
 		if(menuEscolhido == 1){
-			System.out.println("Massa Gorda(%): " + new DecimalFormat("#,###.00").format(mc.massaGordaPerc));
-			System.out.println("Massa Magra(%): " + new DecimalFormat("#,###.00").format(mc.massaMagraPerc));
+			System.out.println("Massa Gorda(%): " + new DecimalFormat("#,###.00").format(mc.getMassaGordaPerc()));
+			System.out.println("Massa Magra(%): " + new DecimalFormat("#,###.00").format(mc.getMassaMagraPerc()));
 			System.out.println();
 			System.out.println("Massa Gorda(Kg): " + new DecimalFormat("#,###.00").format(mc.getMassaGordaKgs()));
 			System.out.println("Massa Magra(Kg): " + new DecimalFormat("#,###.00").format(mc.getMassaMagraKgs()));
 			System.out.println();
 			System.out.println("Peso Ideal(Kg): "+new DecimalFormat("#,###.00").format(mc.getPesoIdeal()));
-			System.out.println("Preciso Perder(Kg): "+new DecimalFormat("#,###.00").format(mc.peso-mc.getPesoIdeal()));
+			System.out.println("Preciso Perder(Kg): "+new DecimalFormat("#,###.00").format(mc.getPeso()-mc.getPesoIdeal()));
 			System.out.println();
 		}else if(menuEscolhido == 2){
 			System.out.println("Gasto Calorico Basal: "+new DecimalFormat("#,###.00").format(mc.getGastoCaloricoBasal()));
@@ -125,8 +134,8 @@ public class Principal {
 			System.out.println();
 		}else if(menuEscolhido == 3){
 			System.out.println("#Com Adpometro#");
-			System.out.println("Massa Gorda(%): " + new DecimalFormat("#,###.00").format(mc.massaGordaPercAdipometro));
-			System.out.println("Massa Magra(%): " + new DecimalFormat("#,###.00").format(mc.massaMagraPercAdipometro));
+			System.out.println("Massa Gorda(%): " + new DecimalFormat("#,###.00").format(mc.getMassaGordaPercAdipometro()));
+			System.out.println("Massa Magra(%): " + new DecimalFormat("#,###.00").format(mc.getMassaMagraPercAdipometro()));
 			System.out.println();
 			System.out.println("Massa Gorda(Kg): " + new DecimalFormat("#,###.00").format(mc.getMassaGordaKgsComAdipometro()));
 			System.out.println("Massa Magra(Kg): " + new DecimalFormat("#,###.00").format(mc.getMassaMagraKgsComAdipometro()));

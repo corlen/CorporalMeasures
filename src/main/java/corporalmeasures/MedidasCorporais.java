@@ -1,50 +1,32 @@
-public class MedidasCorporais {
+package corporalmeasures;
 
-	double peso;
-	double cintura;
-	double pescoco;
-	double altura;
-	double quadril;
-	double peito;
-	double abdomen;
-	double perna;
-	double massaMagraPerc;
-	double massaGordaPerc;
-	double massaMagraPercAdipometro;
-	double massaGordaPercAdipometro;
-	double massaGordaPercDesejada;
-	double nivelAtividadeFisica;
-	int sexo = 1;
-	int idade;
+public class MedidasCorporais{
+
+    private double peso;
+    private double cintura;
+	private double pescoco;
+	private double altura;
+	private double quadril;
+	private double peito;
+	private double abdomen;
+	private double perna;
+	private double massaMagraPerc;
+	private double massaGordaPerc;
+	private double massaMagraPercAdipometro;
+	private double massaGordaPercAdipometro;
+	private double massaGordaPercDesejada;
+	private double nivelAtividadeFisica;
+	private int sexo = 1;
+	private int idade;
 	public static final int SEXO_MASCULINO = 0;
 	public static final int SEXO_FEMININO = 1;
 	
 
-	public MedidasCorporais(double peso, double cintura, double pescoco, double altura, 
-								double quadril,double massa_gorda_perc_desejada, int sexo, 
-									double nivelAtividadeFisica, int idade,
-										double peito, double abdomen, double perna){
-		this.peso = peso;
-		this.cintura = cintura;
-		this.pescoco = pescoco;
-		this.altura = altura;
-		this.quadril = quadril;
-		this.peito = peito;
-		this.abdomen = abdomen;
-		this.perna = perna;
-		this.massaGordaPercDesejada = massa_gorda_perc_desejada;
-		this.sexo = sexo;
-		this.idade = idade;
-		this.nivelAtividadeFisica = nivelAtividadeFisica;
+	public void calculate(){
 		this.setMassaGordaPerc(sexo);
 		this.setMassaMagraPerc();
 		this.setMassaGordaPercComAdipometro();
 		this.setMassaMagraPercComAdipometro();
-
-		
-	}
-	
-	public MedidasCorporais() {
 	}
 
 	public double getPesoIdeal() {
@@ -98,4 +80,71 @@ public class MedidasCorporais {
 		return (((10*this.peso)+(6.25*this.altura)-(5*this.idade)+5)*this.nivelAtividadeFisica)*1.2;
 	}
 
+    public double getPeso() {
+        return peso;
+    }
+
+    public void setPeso(double peso) {
+        this.peso = peso;
+    }
+
+    public void setCintura(double cintura) {
+        this.cintura = cintura;
+    }
+
+    public void setPescoco(double pescoco) {
+        this.pescoco = pescoco;
+    }
+
+    public void setAltura(double altura) {
+        this.altura = altura;
+    }
+
+    public void setQuadril(double quadril) {
+        this.quadril = quadril;
+    }
+
+    public void setPeito(double peito) {
+        this.peito = peito;
+    }
+
+    public void setAbdomen(double abdomen) {
+        this.abdomen = abdomen;
+    }
+
+    public void setPerna(double perna) {
+        this.perna = perna;
+    }
+
+    public double getMassaMagraPerc() {
+        return massaMagraPerc;
+    }
+
+    public double getMassaGordaPerc() {
+        return massaGordaPerc;
+    }
+
+    public double getMassaMagraPercAdipometro() {
+        return massaMagraPercAdipometro;
+    }
+
+    public double getMassaGordaPercAdipometro() {
+        return massaGordaPercAdipometro;
+    }
+
+    public void setMassaGordaPercDesejada(double massaGordaPercDesejada) {
+        this.massaGordaPercDesejada = massaGordaPercDesejada;
+    }
+
+    public void setNivelAtividadeFisica(double nivelAtividadeFisica) {
+        this.nivelAtividadeFisica = nivelAtividadeFisica;
+    }
+
+    public void setSexo(int sexo) {
+        this.sexo = sexo;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
 }
