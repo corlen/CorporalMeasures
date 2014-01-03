@@ -1,1 +1,8 @@
-Programa em linha de comando que cálcula o peso ideal 
+Programa em linha de comando que cálcula o peso ideal
+
+TODO:
+-Criar uma interface para abordar diferentes formas de calculo de porcetagem de gordura(atualmente só tem o método da marinha americana).
+-Mudar toda a nomenclatura para ingles
+-Dividir a classe MedidasCorporais em outras, cada uma com uma só responsabilidade
+-Retirar o hashmap de nivel de atividade fisica da classe principal e colocar na classe que é responsavel por isso.
+-Criar novos testes.
