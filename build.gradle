@@ -1,11 +1,19 @@
 apply plugin:"java"
 apply plugin:"eclipse"
+apply plugin:"idea"
 apply plugin:"application"
+
+mainClassName = "corporalmeasures.Principal"
 
 repositories {
   mavenCentral()
 }
 
 dependencies {
-  testCompile "junit:junit:4.10"
+  testCompile "junit:junit:4.11"
+  testCompile "org.mockito:mockito-all:1.9.5"
+}
+
+run {
+    standardInput = System.in
 }
