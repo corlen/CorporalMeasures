@@ -13,9 +13,9 @@ public abstract class CorporalMeasures {
 		return  (data.getWeight() - (getFatPercentage() * data.getWeight())) / (1 - expectedFatPercentage);
 	}
 
-	protected abstract Double getFatPercentage();
+	public abstract Double getFatPercentage();
 
-    protected Double getMusclePercentage() {
+    public Double getMusclePercentage() {
         return 1 - getFatPercentage();
     }
 

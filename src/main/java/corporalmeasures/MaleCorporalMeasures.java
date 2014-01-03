@@ -8,7 +8,7 @@ public class MaleCorporalMeasures extends CorporalMeasures {
         super(data);
     }
 
-    protected Double getFatPercentage() {
+    public Double getFatPercentage() {
         return ((495 / ((1.0324-((log(getData().getWaist() - getData().getNeck()) / log(10)) * 0.19077)) +
                (log(getData().getHeight()) / log(10)) * 0.15456)) - 450) / 100;
     }

@@ -8,7 +8,7 @@ public class FemaleCorporalMeasures extends CorporalMeasures {
         super(data);
     }
 
-    protected Double getFatPercentage(){
+    public Double getFatPercentage(){
         double hipPlusWaist = ((FemalePersonData)getData()).getHip() + getData().getWaist();
 
         return (495 / ((1.29579 - (0.35004 * (log(hipPlusWaist - getData().getNeck()) / log(10)))) +

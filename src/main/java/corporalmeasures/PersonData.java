@@ -6,6 +6,7 @@ public class PersonData {
     private Double waist;
     private Double neck;
     private Double height;
+    private Integer age;
 
     public Double getWeight() {
         return weight;
@@ -37,5 +38,13 @@ public class PersonData {
 
     public Double getHeight() {
         return this.height;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 }
