@@ -3,7 +3,7 @@ apply plugin:"eclipse"
 apply plugin:"idea"
 apply plugin:"application"
 
-mainClassName = "corporalmeasures.Principal"
+mainClassName = "corporalmeasures.ui.Main"
 
 repositories {
   mavenCentral()
