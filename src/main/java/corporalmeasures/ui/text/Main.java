@@ -1,45 +1,53 @@
-package corporalmeasures;
+package corporalmeasures.ui.text;
+
+import corporalmeasures.CorporalMeasures;
+import corporalmeasures.FemalePersonData;
+import corporalmeasures.GastoCaloricoBasal;
+import corporalmeasures.PersonData;
 
 import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Scanner;
 
 
-public class Principal {
+public class Main {
+
+    private Scanner scanner;
+
+    public Main(){
+        scanner = new Scanner(System.in);
+    }
+
+    public PersonData collectPersonData() {
+        System.out.println("Sexo: ");
+        System.out.println("0 - Masculino");
+        System.out.println("1 - Feminino");
+        int sexo = Integer.parseInt(scanner.nextLine());
+
+        PersonData personData;
+        if(sexo == 0) personData = new PersonData();
+        if(sexo == 1) personData = new FemalePersonData();
+        throw new RuntimeException("Sexo inválido");
+
+        System.out.println("Peso(em kg): ");
+        peso = Double.parseDouble(scan.nextLine());
+
+        System.out.println("Altura(em cm): ");
+        altura = Double.parseDouble(scan.nextLine());
+
+    }
+
+
 
 	public static void main(String[] args) {
 
-		Double massaGordaDesejadaPercent = 0D;
-		Double peso;
-        Double cintura = 0D;
-        Double pescoco = 0D;
-        Double altura;
-        Double quadril=0.0;
-        Double nivelAtividadeFisica=0D;
-		Integer sexo;
-        Integer idade;
-        Integer menuEscolhido;
+        Main main = new Main();
+        PersonData personData = main.collectPersonData();
 
-		Scanner scan = new Scanner(System.in);
-
-		System.out.println("Menu:");
-		System.out.println("1 - Peso Ideal");
-		System.out.println("2 - Gasto Calórico Basal");
-		menuEscolhido = Integer.parseInt(scan.nextLine());
-
-		System.out.println("Sexo: ");
-		System.out.println("0 - Masculino");
-		System.out.println("1 - Feminino");
-		sexo = Integer.parseInt(scan.nextLine());
-		
-		System.out.println("Idade: ");
-		idade = Integer.parseInt(scan.nextLine());
-		
-		System.out.println("Peso(em kg): ");
-		peso = Double.parseDouble(scan.nextLine());
-		
-		System.out.println("Altura(em cm): ");
-		altura = Double.parseDouble(scan.nextLine());
+        System.out.println("Menu:");
+        System.out.println("1 - Peso Ideal");
+        System.out.println("2 - Gasto Calórico Basal");
+        menuEscolhido = Integer.parseInt(scan.nextLine());
 
 		if(menuEscolhido == 1){
 			System.out.println("Cintura(em cm): ");
@@ -48,7 +56,7 @@ public class Principal {
 			System.out.println("Pescoco(em cm): ");
 			pescoco = Double.parseDouble(scan.nextLine());
 
-			if(sexo.equals(MedidasCorporais.SEXO_FEMININO)){
+			if(sexo.equals(1)){
 				System.out.println("Quadril(em cm): ");
 				quadril = Double.parseDouble(scan.nextLine());
 				
@@ -62,7 +70,8 @@ public class Principal {
 				System.out.println();
 				System.out.println("% de gordura corporal desejada:");
 				massaGordaDesejadaPercent = Double.parseDouble(scan.nextLine());
-			}else{
+			}
+            else{
 				System.out.println("% gordura corporal\t\tHomens");
 				System.out.println("Nivel de Competicao \t3%-6%");
 				System.out.println("Bastante em forma	\t<= 9%");
@@ -99,31 +108,34 @@ public class Principal {
 		
 		scan.close();
 
-		MedidasCorporais mc = new MedidasCorporais();
-        mc.setPeso(peso);
-        mc.setCintura(cintura);
-        mc.setPescoco(pescoco);
-        mc.setAltura(altura);
+		CorporalMeasures mc = new CorporalMeasures();
+        mc.setWeight(peso);
+        mc.setWaist(cintura);
+        mc.setNeck(pescoco);
+        mc.setHeight(altura);
         mc.setQuadril(quadril);
-        mc.setMassaGordaPercDesejada(massaGordaDesejadaPercent);
+        mc.setExpectedFatPercentage(massaGordaDesejadaPercent);
         mc.setSexo(sexo);
         mc.setNivelAtividadeFisica(nivelAtividadeFisica);
-        mc.setIdade(idade);
+        mc.setAge(idade);
         mc.calculate();
 
 		System.out.println();
 		System.out.println("========RESULTADO============");
-		if(menuEscolhido == 1){
-			System.out.println("Massa Gorda(%): " + new DecimalFormat("#,###.00").format(mc.getMassaGordaPerc()));
-			System.out.println("Massa Magra(%): " + new DecimalFormat("#,###.00").format(mc.getMassaMagraPerc()));
+
+        if(menuEscolhido == 1){
+			System.out.println("Massa Gorda(%): " + new DecimalFormat("#,###.00").format(mc.getFatPercentage()));
+			System.out.println("Massa Magra(%): " + new DecimalFormat("#,###.00").format(mc.getMusclePercentage()));
 			System.out.println();
 			System.out.println("Massa Gorda(Kg): " + new DecimalFormat("#,###.00").format(mc.getMassaGordaKgs()));
 			System.out.println("Massa Magra(Kg): " + new DecimalFormat("#,###.00").format(mc.getMassaMagraKgs()));
 			System.out.println();
 			System.out.println("Peso Ideal(Kg): "+new DecimalFormat("#,###.00").format(mc.getPesoIdeal()));
-			System.out.println("Preciso Perder(Kg): "+new DecimalFormat("#,###.00").format(mc.getPeso()-mc.getPesoIdeal()));
+			System.out.println("Preciso Perder(Kg): "+new DecimalFormat("#,###.00").format(mc.getWeight()-mc.getPesoIdeal()));
 			System.out.println();
-		}else if(menuEscolhido == 2){
+		}
+        else if(menuEscolhido == 2){
+            GastoCaloricoBasal gcb = new GastoCaloricoBasal(personData, )
 			System.out.println("Gasto Calorico Basal: "+new DecimalFormat("#,###.00").format(mc.getGastoCaloricoBasal()));
 			System.out.println("Gasto Calorico Basal para dieta emagrecimento: "+new DecimalFormat("#,###.00").format(mc.getGastoCaloricoBasalNivelDietaEmagrecimento()));
 			System.out.println("Gasto Calorico Basal para hipertrofia: "+new DecimalFormat("#,###.00").format(mc.getGastoCaloricoBasalNivelDietaHipertrofia()));
