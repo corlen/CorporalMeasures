@@ -1,8 +1,8 @@
-Programa em linha de comando que cálcula o peso ideal
+Console program to calculate ideal weight and basal caloric consume
 
 TODO:
--Criar uma interface para abordar diferentes formas de calculo de porcetagem de gordura(atualmente só tem o método da marinha americana).
--Mudar toda a nomenclatura para ingles
--Dividir a classe MedidasCorporais em outras, cada uma com uma só responsabilidade
--Retirar o hashmap de nivel de atividade fisica da classe principal e colocar na classe que é responsavel por isso.
--Criar novos testes.
+
+*Create an interface to be possible add some different ways of fat calculation(today only the U.S Navy method)
+*Change all the nouns to english(Doing)
+*Remove the Physical Activity Level hashmap from ui class and create a class to be responsible for that
+*Create new unit tests
