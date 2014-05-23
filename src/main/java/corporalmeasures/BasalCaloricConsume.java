@@ -9,15 +9,15 @@ public class BasalCaloricConsume {
 
     }
 
-    public Double getGastoCaloricoBasal() {
+    public Double getBasalCaloricConsume() {
         return ((10 * data.getWeight()) + (6.25 * data.getHeight()) - (5 * data.getAge()) + 5) * data.getPhysicalActivityLevel();
     }
 
-    public Double getGastoCaloricoBasalNivelDietaEmagrecimento() {
-        return getGastoCaloricoBasal() * 0.8;
+    public Double getBasalCaloricConsumeForWeightLoss() {
+        return getBasalCaloricConsume() * 0.8;
     }
 
-    public Double getGastoCaloricoBasalNivelDietaHipertrofia() {
-        return getGastoCaloricoBasal() * 1.2;
+    public Double getBasalCaloricConsumeForIncreaseMuscleMass() {
+        return getBasalCaloricConsume() * 1.2;
     }
 }

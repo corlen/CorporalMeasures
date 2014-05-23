@@ -7,6 +7,7 @@ public class PersonData {
     private Double neck;
     private Double height;
     private Integer age;
+    private Double physicalActivityLevel;
 
     public Double getWeight() {
         return weight;
@@ -46,5 +47,22 @@ public class PersonData {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "PersonData{" +
+                "weight=" + weight +
+                ", waist=" + waist +
+                ", neck=" + neck +
+                ", height=" + height +
+                ", age=" + age +
+                '}';
+    }
+
+    public Double getPhysicalActivityLevel() { return physicalActivityLevel; }
+
+    public void setPhysicalActivityLevel(Double physicalActivityLevel) {
+        this.physicalActivityLevel = physicalActivityLevel;
     }
 }

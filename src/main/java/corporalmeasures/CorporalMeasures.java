@@ -10,21 +10,20 @@ public abstract class CorporalMeasures {
     }
 
 	public Double getPesoIdeal() {
-		return  (data.getWeight() - (getFatPercentage() * data.getWeight())) / (1 - expectedFatPercentage);
+		return  (data.getWeight() - (getFatPercentage()/100 * data.getWeight())) / (1 - expectedFatPercentage/100);
 	}
 
 	public abstract Double getFatPercentage();
 
     public Double getMusclePercentage() {
-        return 1 - getFatPercentage();
+        return 100 - getFatPercentage();
     }
 
 	public Double getMassaMagraKgs(){
-		return getMusclePercentage() * data.getWeight();
+		return getMusclePercentage()/100 * data.getWeight();
 	}
 	
-	public Double getMassaGordaKgs(){
-		return getFatPercentage() * data.getWeight();
+	public Double getMassaGordaKgs(){ return getFatPercentage()/100 * data.getWeight();
 	}
 
     public void setExpectedFatPercentage(Double expectedFatPercentage) {
